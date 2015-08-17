@@ -1,4 +1,4 @@
-###Introduction to Robotics(Lab Manual)- EECS 5375
+###Introduction to Robotics(Lab Manual)- EECS 4342
 
 ![© Robai](/assets/Robai.jpg)
 
