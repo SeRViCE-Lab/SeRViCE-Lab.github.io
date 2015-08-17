@@ -4,8 +4,7 @@ Copyright Robai
 Lab Manual
 
 *	Instructor: Nicholas Gans, Assistant Professor, University of Texas at Dallas
-
-*	- Fall 2013, 2014, 2015
+	- Fall 2013, 2014, 2015
 
 © Nicholas Gans, Vineeth Joseph, and Olalekan Ogunmolu. University of Texas at Dallas, 2015
 
