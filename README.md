@@ -1,7 +1,6 @@
-###Introduction to Robotics - EECS 5375
+###Introduction to Robotics(Lab Manual)- EECS 5375
 
-Copyright Robai
-Lab Manual
+![© Robai](/assets/Robai.jpg)
 
 *	Instructor: Nicholas Gans, Assistant Professor, University of Texas at Dallas
 	- Fall 2013, 2014, 2015
