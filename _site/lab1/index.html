@@ -54,6 +54,12 @@
   <article class="post-content">
   <p>Authors: <a href="http://www.utdallas.edu/%7Engans/">Nicholas Gans</a> and <a href="http://lakehanne.github.io">Olalekan P. Ogunmolu</a>.</p>
 
+<div class="imgcap">
+<img src="/assets/Lab1/Robai.jpg">
+<div class="thecap">
+  </div>
+</div>
+
 <h2>LAB 1: Introduction to the Cyton ARM</h2>
 
 <h2>Table of Contents</h2>
@@ -83,14 +89,17 @@
 <p>In this lab, you will get familiarized with the Cyton Arm Robai Robot, the home configuration of the manipulator, using the numerical manipulator configuration diallog (otherwise known as the slider) as well understand using the guide mode for controlling the robot arm.</p>
 
 <ul>
-<li><p>The goals of this assignment are as follows:</p></li>
-<li><p>Move the Cyton using the Numerical Manipulator Configuration Dialog/Slider</p></li>
-<li><p>Send the Cyton to the home configurations using Numerical Manipulator Configuration Dialog/Slider</p></li>
-<li><p>Demonstrate sequence of motions like pick and place of objects (small wooden blocks)</p></li>
+<li>  The goals of this lab are as follows:
+
+<ul>
+<li>Move the Cyton using the Numerical Manipulator Configuration Dialog/Slider</li>
+<li>Send the Cyton to the home configurations using Numerical Manipulator Configuration Dialog/Slider</li>
+<li>Demonstrate sequence of motions like pick and place of objects (small wooden blocks)</li>
+</ul></li>
 </ul>
 
 <div class="imgcap">
-<img src="/assets/Lab1/Robai.jpg">
+<img src="/assets/Lab1/Robai-Viewer.jpg">
 <div class="thecap">
   </div>
 </div>
@@ -119,19 +128,19 @@
 <li>Connect the Cyton arm to the computer using the USB cable.</li>
 </ul></li>
 <li>  Open Cyton-Viewer.exe.</li>
-<li>  Make sure the “Hardware State” indicator is green.  If it is red,  click it to toggle.</li>
-<li>  Click on the “Numerical Manipulator Configuration” in the CytonViewer toolbar (see Fig. 1.2).</li>
+<li>  Make sure the <code>Hardware State</code> indicator is green.  If it is red,  click it to toggle.</li>
+<li>  Click on the <code>Numerical Manipulator Configuration</code> in the CytonViewer toolbar (see Fig. 1.2).</li>
 <li>  Experiment with the arm, using the Numerical Configuration Dialog to move the motors that drive each axis of the robot.
 
 <ul>
 <li>Observe that the Numerical Configuration will display a joint position value for each motor you move.<br></li>
-<li>These numbers correspond to encoder measurements of the angle of each motor axis.  By default, the slider will move each servo (motor).- Desired joint position values can also be entered in directly by typing in the “Joint Position” field.</li>
+<li>These numbers correspond to encoder measurements of the angle of each motor axis.  By default, the slider will move each servo (motor).- Desired joint position values can also be entered in directly by typing in the <code>Joint Position</code> field.</li>
 <li>When the user opens Cyton Viewer without hardware, it initializes to the default hardware home position. However, if hardware is present, the viewer simulation will initialize to the current pose of the hardware.</li>
 </ul></li>
 <li>  Move the joints using the Slider to become familiar with the Numerical Manipulator Configuration/Slider</li>
-<li>  Click on the “Guide Mode” Button in the CytonViewer toolbar.  Experiment with the arm, using Guide Mode to direct the pose of the end effector.</li>
+<li>  Click on the <code>Guide Mode</code> Button in the CytonViewer toolbar.  Experiment with the arm, using Guide Mode to direct the pose of the end effector.</li>
 <li>  Using the Movement Recording capabilities, along with the Numerical Configuration Dialog and/or Guide Mode, program the robot to pick up several blocks and move them to new locations.  Try stacking blocks.</li>
-<li>  The first and final robot pose should be the home configuration (seen in Fig. 1).<br></li>
+<li>  The first and final robot pose should be the home configuration (seen in Fig. 1.1).<br></li>
 <li>  Demonstrate your program to your TA or instructor</li>
 </ul>
 

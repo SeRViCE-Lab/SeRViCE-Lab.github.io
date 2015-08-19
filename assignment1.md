@@ -6,6 +6,12 @@ permalink: /lab1/
 
 Authors: [Nicholas Gans](http://www.utdallas.edu/~ngans/) and [Olalekan P. Ogunmolu](http://lakehanne.github.io).
 
+<div class="imgcap">
+<img src="/assets/Lab1/Robai.jpg">
+<div class="thecap">
+  </div>
+</div>
+
 ##LAB 1: Introduction to the Cyton ARM
 
 ##Table of Contents
@@ -24,14 +30,13 @@ Authors: [Nicholas Gans](http://www.utdallas.edu/~ngans/) and [Olalekan P. Ogunm
 ###Objectives
 In this lab, you will get familiarized with the Cyton Arm Robai Robot, the home configuration of the manipulator, using the numerical manipulator configuration diallog (otherwise known as the slider) as well understand using the guide mode for controlling the robot arm.
 
-*	The goals of this assignment are as follows:
-
-- Move the Cyton using the Numerical Manipulator Configuration Dialog/Slider
-- Send the Cyton to the home configurations using Numerical Manipulator Configuration Dialog/Slider
-- Demonstrate sequence of motions like pick and place of objects (small wooden blocks)
+*	The goals of this lab are as follows:
+	- Move the Cyton using the Numerical Manipulator Configuration Dialog/Slider
+	- Send the Cyton to the home configurations using Numerical Manipulator Configuration Dialog/Slider
+	- Demonstrate sequence of motions like pick and place of objects (small wooden blocks)
 
 <div class="imgcap">
-<img src="/assets/Lab1/Robai.jpg">
+<img src="/assets/Lab1/Robai-Viewer.jpg">
 <div class="thecap">
   </div>
 </div>
@@ -54,16 +59,16 @@ You would work in grouped cohorts as determined by the roster. Each cohort is ex
 *	Turn on the Cyton arm by connecting the AC adapter.
 	- Connect the Cyton arm to the computer using the USB cable.
 *	Open Cyton-Viewer.exe.
-*	Make sure the “Hardware State” indicator is green.  If it is red,  click it to toggle.
-*	Click on the “Numerical Manipulator Configuration” in the CytonViewer toolbar (see Fig. 1.2).
+*	Make sure the `Hardware State` indicator is green.  If it is red,  click it to toggle.
+*	Click on the `Numerical Manipulator Configuration` in the CytonViewer toolbar (see Fig. 1.2).
 *	Experiment with the arm, using the Numerical Configuration Dialog to move the motors that drive each axis of the robot.
 	- Observe that the Numerical Configuration will display a joint position value for each motor you move.  
-	- These numbers correspond to encoder measurements of the angle of each motor axis.  By default, the slider will move each servo (motor).- Desired joint position values can also be entered in directly by typing in the “Joint Position” field.
+	- These numbers correspond to encoder measurements of the angle of each motor axis.  By default, the slider will move each servo (motor).- Desired joint position values can also be entered in directly by typing in the `Joint Position` field.
 	- When the user opens Cyton Viewer without hardware, it initializes to the default hardware home position. However, if hardware is present, the viewer simulation will initialize to the current pose of the hardware.
 *	Move the joints using the Slider to become familiar with the Numerical Manipulator Configuration/Slider
-*	Click on the “Guide Mode” Button in the CytonViewer toolbar.  Experiment with the arm, using Guide Mode to direct the pose of the end effector.
+*	Click on the `Guide Mode` Button in the CytonViewer toolbar.  Experiment with the arm, using Guide Mode to direct the pose of the end effector.
 *	Using the Movement Recording capabilities, along with the Numerical Configuration Dialog and/or Guide Mode, program the robot to pick up several blocks and move them to new locations.  Try stacking blocks.
-*	The first and final robot pose should be the home configuration (seen in Fig. 1).  
+*	The first and final robot pose should be the home configuration (seen in Fig. 1.1).  
 *	Demonstrate your program to your TA or instructor
 
 **Refer to the detailed descriptions below for more information.**
@@ -115,7 +120,7 @@ This is a simple way of controlling the Cyton arm by directly choosing the desir
 
 **Fig 1.3 — Guide Frame On End Effector**
 
-### Recording Movements
+###Recording Movements
 One method to program the robot using Cyton Viewer is to record a motion sequence.  The general process is to turn on Record Mode, move the Cyton arm as desired, turn off Record Mode, and save the recorded motion to a path file.  This is very similar to the process followed for industrial robots in manufacturing.  
 
 [![terrific-robai](http://www.robai.com/content/docs/manual/NetHelp/Media/image017.jpg)](/assets/Lab1/playBack.avi "terrific-robai")
