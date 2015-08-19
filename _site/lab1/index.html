@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Introduction to Robotics (EECS 4342)  Lab Manual</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Lab materials and codebase for UT Dallas' class EECS 4342: Introduction to Robotics.">
+    <link rel="canonical" href="http://eecs4342.github.io/lab1/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Google tracking -->
+    
+    <script>
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-64680332-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+    
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap title-wrap">
+    <a class="site-title" href="/">Introduction to Robotics (EECS 4342)  Lab Manual</a>
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1></h1>
+  </header>
+
+  <article class="post-content">
+  <p>Authors: <a href="http://www.utdallas.edu/%7Engans/">Nicholas Gans</a> and <a href="http://lakehanne.github.io">Olalekan P. Ogunmolu</a>.</p>
+
+<h2>LAB 1: Introduction to the Cyton ARM</h2>
+
+<h2>Table of Contents</h2>
+
+<ul>
+<li><a href="#objectives">Objectives</a>
+
+<ul>
+<li>Goals</li>
+<li>Video Example</li>
+</ul></li>
+<li><a href="#tasks">Tasks</a></li>
+<li><a href="#procedure">Procedure</a>
+
+<ul>
+<li>Numerical Configuration</li>
+</ul></li>
+<li><a href="#numerical-Configuration-/-joint-angle-control">Numerical Configuration / Joint Angle Control</a></li>
+<li><a href="#guide-mode-movement">Guide Mode Movement</a></li>
+<li><a href="#report">Report</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#grading">Grading</a></li>
+</ul>
+
+<h3>Objectives</h3>
+
+<p>In this lab, you will get familiarized with the Cyton Arm Robai Robot, the home configuration of the manipulator, using the numerical manipulator configuration diallog (otherwise known as the slider) as well understand using the guide mode for controlling the robot arm.</p>
+
+<ul>
+<li><p>The goals of this assignment are as follows:</p></li>
+<li><p>Move the Cyton using the Numerical Manipulator Configuration Dialog/Slider</p></li>
+<li><p>Send the Cyton to the home configurations using Numerical Manipulator Configuration Dialog/Slider</p></li>
+<li><p>Demonstrate sequence of motions like pick and place of objects (small wooden blocks)</p></li>
+</ul>
+
+<div class="imgcap">
+<img src="/assets/Lab1/Robai.jpg">
+<div class="thecap">
+  </div>
+</div>
+
+<p><strong>Fig 1.1 - The cyton UI enviroment</strong></p>
+
+<h4>Video Example</h4>
+
+<p>Please watch the video below to get familiar with the Cyton configuration.</p>
+
+<p><a href="/assets/Lab1/controls.avi" title="awesome-robai"><img src="/assets/Lab1/awesome-robai.png" alt="awesome-robai"></a></p>
+
+<p><strong>Video 1 - An example configuration of the Robai robot.</strong></p>
+
+<h3>Tasks</h3>
+
+<p>You would work in grouped cohorts as determined by the roster. Each cohort is expected to program the cyton in picking and placing wooden blocks which you are going to be supplied with. You have leeway in what you want the robot to do but we generally expect you to be able to stack the wooden blocks on one another.</p>
+
+<h3>Procedure</h3>
+
+<ul>
+<li>  Ensure you read <strong>all</strong> Lab 1 Instructions in their entirety.</li>
+<li>  Turn on the Cyton arm by connecting the AC adapter.
+
+<ul>
+<li>Connect the Cyton arm to the computer using the USB cable.</li>
+</ul></li>
+<li>  Open Cyton-Viewer.exe.</li>
+<li>  Make sure the “Hardware State” indicator is green.  If it is red,  click it to toggle.</li>
+<li>  Click on the “Numerical Manipulator Configuration” in the CytonViewer toolbar (see Fig. 1.2).</li>
+<li>  Experiment with the arm, using the Numerical Configuration Dialog to move the motors that drive each axis of the robot.
+
+<ul>
+<li>Observe that the Numerical Configuration will display a joint position value for each motor you move.<br></li>
+<li>These numbers correspond to encoder measurements of the angle of each motor axis.  By default, the slider will move each servo (motor).- Desired joint position values can also be entered in directly by typing in the “Joint Position” field.</li>
+<li>When the user opens Cyton Viewer without hardware, it initializes to the default hardware home position. However, if hardware is present, the viewer simulation will initialize to the current pose of the hardware.</li>
+</ul></li>
+<li>  Move the joints using the Slider to become familiar with the Numerical Manipulator Configuration/Slider</li>
+<li>  Click on the “Guide Mode” Button in the CytonViewer toolbar.  Experiment with the arm, using Guide Mode to direct the pose of the end effector.</li>
+<li>  Using the Movement Recording capabilities, along with the Numerical Configuration Dialog and/or Guide Mode, program the robot to pick up several blocks and move them to new locations.  Try stacking blocks.</li>
+<li>  The first and final robot pose should be the home configuration (seen in Fig. 1).<br></li>
+<li>  Demonstrate your program to your TA or instructor</li>
+</ul>
+
+<p><strong>Refer to the detailed descriptions below for more information.</strong></p>
+
+<h3>Numerical Configuration / Joint Angle Control</h3>
+
+<p>This is a straightforward way of controlling the Cyton arm by directly setting desired joint angles.</p>
+
+<p><u><strong>Steps</strong></u></p>
+
+<ul>
+<li>  Click on the Numerical Manipulator Configuration Icon (Fig 1.2)</li>
+<li>  The Manipulator Config (a.k.a. Slider) dialogue window appears</li>
+<li>  Change the values of servos/motor and move the robot</li>
+</ul>
+
+<div class="imgcap">
+<img src="/assets/Lab1/Robai3.jpg">
+<div class="thecap">
+  </div>
+</div>
+
+<p><strong>Fig: 1.2 – Numerical Manipulator Configuration Button</strong></p>
+
+<h3>Guide Mode Movement</h3>
+
+<p>This is a simple way of controlling the Cyton arm by directly choosing the desired position and/or orientation of the gripper.</p>
+
+<p><u><strong>Steps</strong></u></p>
+
+<ul>
+<li>  Click the Guide Mode (Guide Frame) button (Fig 1.3).</li>
+<li>  Make sure <code>Wrist Roll</code> is selected under <code>End Effector</code>.  If it is not an option to select, select it under <code>Available Links</code> and   click <code>&lt;&lt;Add</code>.</li>
+<li>  Clicking <code>Edit</code> will allow you to change parameters of the current frame.</li>
+<li>  Setting the Type to <code>pointEndEffector</code> (the default) will allow the gripper to have arbitrary orientation to be at the origin of the frame.<br></li>
+<li>  Selecting <code>frameEndEffector</code> will enforce the gripper to have the same orientation as the frame.</li>
+<li>  Press the <code>Run Simulation</code> button in the toolbar (Fig 1.4) to put the simulation in Play mode.</li>
+<li>  Holding the left mouse button and moving the mouse will move the Guide Frame to different (x,y,z) positions.  The Cyton arm moves to keep the wrist at the origin of the frame.</li>
+<li>  Holding the right mouse button while moving the mouse will rotate the frame.  If it is set to  frameEndEffector, the gripper will rotate.</li>
+<li>  Note that some frame positions and/or orientations may not be physically achievable for the robot, in which case the robot will stop moving until the guide frame is brought back to a feasible location. </li>
+</ul>
+
+<p><a href="/assets/Lab1/guideFrameControl.avi" title="w00t-robai"><img src="http://www.robai.com/content/docs/manual/NetHelp/Media/image017.jpg" alt="w00t-robai"></a></p>
+
+<p><strong>Video 2: Guide Frame Control</strong></p>
+
+<div class="imgcap">
+<img src="/assets/Lab1/Robai4.jpg">
+<div class="thecap">
+  </div>
+</div>
+
+<p><strong>Fig 1.3 — Guide Frame On End Effector</strong></p>
+
+<h3>Recording Movements</h3>
+
+<p>One method to program the robot using Cyton Viewer is to record a motion sequence.  The general process is to turn on Record Mode, move the Cyton arm as desired, turn off Record Mode, and save the recorded motion to a path file.  This is very similar to the process followed for industrial robots in manufacturing.  </p>
+
+<p><a href="/assets/Lab1/playBack.avi" title="terrific-robai"><img src="http://www.robai.com/content/docs/manual/NetHelp/Media/image017.jpg" alt="terrific-robai"></a></p>
+
+<p><strong>Video 3: Robai Playback</strong></p>
+
+<p>Follow these steps:</p>
+
+<ul>
+<li>  Click the Record Mode button to begin recording</li>
+<li>  In the dropdown menu beside the Record Mode button, choose either GuideFrame mode or Joint Mode.  Recording in joint mode will record the exact value of each joint at each time sample.  Recording in GuideFrame mode will record just the end-effector position and pose and let the Cyton Viewer software determine an efficient set of joint values during playback. </li>
+<li>  Program the robot’s motion by moving the robot using the Guide Frames or Joint Angle Sliders.</li>
+<li>  The system will record all data while “Run Simulation” is pressed.  Pressing “Pause Simulation” means the robot will not move while you set desired joint angles, but also ensures that the system does not record intermediate motions or lapses.  This works well if you predetermine your needed joint angles.
+Do not hit “Stop Simulation” or close the “Numerical Manipulator Configuration” until you are completely done with your program. This will end the recording. If the program is not complete, you will have to start over.</li>
+<li>  Click the “Save Path” file button (Fig 1.4) and choose a name for the .xml file</li>
+<li>  Load path using the “Load Path” file button in toolbar </li>
+<li>  Press the Path Playback button and “Run simulation” buttons to play the recorded path.  There may be some delay, particularly when using client computers and/or virtual machines.</li>
+</ul>
+
+<div class="imgcap">
+<img src="/assets/Lab1/Robai4.jpg">
+<div class="thecap">
+  </div>
+</div>
+
+<p><strong>Fig 1.4 — Important Buttons in CytonViewer</strong></p>
+
+<ul>
+<li>  The “View Mode” button allows you to change the viewpoint of the simulation by dragging the mouse.  The “Change Center of Interest” button allow you to alter the direction the viewpoint  is looking by dragging the mouse.</li>
+</ul>
+
+<h3>Report</h3>
+
+<p>None required.</p>
+
+<h3>Demo</h3>
+
+<p>Show your TA or instructor the sequence of motions your team has programmed. </p>
+
+<h3>Grading</h3>
+
+<p>Grades will be pass/fail, based entirely on your demo.</p>
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="footer-col-1 column">
+      <ul>
+        
+        <li>
+          <a href="https://github.com/SeRViCE-Lab">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">SeRViCE-Lab</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/patmeansnoble">
+            <span class="icon twitter">
+              <svg version="1.1" class="twitter-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill="#C2C2C2" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27
+                c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767
+                c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206
+                C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271
+                c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469
+                c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+              </svg>
+            </span>
+            <span class="username">patmeansnoble</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:ngans@utdallas.edu">ngans@utdallas.edu</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+        
+    </div>
+
+    <div class="footer-col-3 column">
+      
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <!-- mathjax -->
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>
