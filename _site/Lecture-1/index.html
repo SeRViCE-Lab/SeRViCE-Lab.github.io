@@ -57,29 +57,28 @@
 </script>
 
 <blockquote>
-<h3>The Three Laws of Robotics</h3>
-
-<ol>
-<li> A robot may not injure a human being or, through inaction, allow a human being to come to harm.</li>
-<li> A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.</li>
-<li> A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws. [1]</li>
-</ol>
+<ul>
+<li>A robot may not injure a human being or, through inaction, allow a human being to come to harm.</li>
+<li>A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.</li>
+<li>A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws \(^1\).</li>
+</ul>
 </blockquote>
 
-<p>Table of Contents:</p>
+<h2>Table of Contents:</h2>
 
 <ul>
 <li><a href="#objectives">Course Objectives</a></li>
 <li><a href="#topics">Topics</a></li>
 <li><a href="#policy">Grading Policy</a></li>
 <li><a href="#maths">Mathematical Modeling of Robots</a></li>
+<li><a href="#common-robot-arm-configurations">Common Robot Arm Configurations</a></li>
 <li><a href="#summary">Summary</a></li>
-<li><a href="#add">Additional references</a></li>
+<li><a href="#add">References</a></li>
 </ul>
 
 <p><a name='objectives'></a></p>
 
-<h2>1. Course Learning Objectives</h2>
+<h2>1. Course Objectives</h2>
 
 <ul>
 <li>Students will learn and utilize the mathematical representation of rigid body motions,
@@ -175,19 +174,22 @@ of it before you turn it in.</strong></u></p>
 
 <h3>4.2.  ROBOT MANIPULATORS</h3>
 
-<p>Robot manipulators are made up of <u> <strong>links</strong></u>, \(i\), which are connected by <u><strong>joints</strong></u>, \(j_i\), to form a <u><strong>kinematic chain</strong></u>. Joints are typically rotary (henceforth referred to as <em>revolute</em>) or linear (henceforth referred to as <em>prismatic</em>). </p>
+<p>Robot manipulators are made up of <u> <strong>links</strong></u>, \(i\), which are connected by <u><strong>joints</strong></u>, \(j_i\), to form a <u><strong>kinematic chain</strong></u>. Joints are typically rotary (henceforth referred to as <em>revolute</em>) or linear (henceforth referred to as <em>prismatic</em>) with a simple <code>end effector</code> for manipulating work pieces. Applications vary from simple tasks such as pick and place operations to navigating complex environments (<a href="https://www.youtube.com/watch?v=_luhn7TLfWU">MIT Cheetah Robot</a>) and medical robots such as the <a href="http://www.davincisurgery.com/da-vinci-surgery/da-vinci-surgical-system/">Davinci Surgical System</a> among others.</p>
 
 <p>A <u><strong>revolute joint</strong></u> is akin to a hinge and allows relative rotation between two links. A <u><strong>prismatic</strong></u> joint allows a linear relative motion between the adjoint links. We will denote the revolute joints by \(R\) and the prismatic joints by \(P\).</p>
 
-<p>An example of a revolute joint is depicted in the figure below:</p>
+<p>An example of a revolute/ joint is depicted in the figure below:</p>
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/Lec1/Revolute.png" width="49%" height="250" align="middle">  
   <img src="/assets/Lec1/Prismatic.png" width="49%" height="250" style="border-left: 1px solid black;">
-  <div class="figcaption" align="right">Fig. 1. An example of a revolute joint (left) and a prismatic joint (right).<a href="https://code.google.com/p/impsim/wiki/jmanual_jointRevolute">  Courtesy of impsim. </a></div>
+  <div class="figcaption" align="right">Fig. 1. An example of a revolute joint (left) and a prismatic joint (right). <i>Courtesy, <a href="https://code.google.com/p/impsim/wiki/jmanual_jointRevolute">  impsim. </a></i>
+  </div>
 </div>
 
-<p>The angle \(\Phi\) in the left figure is defined as the joint angle and it connects links <strong>LK1</strong> and <strong>LK2</strong>. Similarly, the displacement \(\Phi\) in the right figure connects  links <strong>LK1</strong> and <strong>LK2</strong>. Rotations follow the right hand rule. Essentially, this means if we have three orthonaormal vectors \(x\), \(y\), and \(z\) \(\in\) \(\mathcal{R}^3\) which define a coordinate frame, they must satisfy the mathematical relation, 
+<p>The angle \(\Phi\) in the left figure is defined as the joint angle and it connects links <strong>LK1</strong> and <strong>LK2</strong>. Similarly, the displacement \(\Phi\) in the right figure connects  links <strong>LK1</strong> and <strong>LK2</strong>. </p>
+
+<p><u>Rotations follow the right hand rule</u>. Essentially, this means if we have three orthonormal vectors \(x\), \(y\), and \(z\) \(\in\) \(\mathcal{R}^3\) which define a coordinate frame, they must satisfy the mathematical relation, 
 <center>\(z\) = \(x\) \(\times\) \(y\).</center>
 We will denote the axis of rotation of a revolute joint or the axis of displacement of a prismatic joint as \(z^i\) if the joint connects links \(i\) and \(i+1\). \(\Phi\) is referred to as the <strong>joint variable</strong> for a revolute or prismatic joint as the case may be.</p>
 
@@ -199,18 +201,19 @@ We will denote the axis of rotation of a revolute joint or the axis of displacem
 <li>A revolute joint will allow rotation between two links.</li>
 <li>A prismatic joint will allow displacement between two links.</li>
 <li>The axis of rotation for a typical joint, \(j_i\) that connects links \(i\) and \(i+1\) is \(z^i\).</li>
+<li>Angles are measured in a clockwise manner so that if an angle along a directed axis is positive if it represents a clockwise rotation about the direction from which we are viewing. </li>
 </ul>
 
-<p>A three link arm with 2 revolute joints for example is referred to as an <strong>RRP</strong> arm, where the R&#39;s stand for <em>revolute</em> and the P stands for <em>prismatic</em>. AN example of an RRP robotic arm is the SCARA robot which we shall deal with shortly.</p>
+<p>A three link arm with 2 revolute joints for example is referred to as an <strong>RRP</strong> arm, where the R&#39;s stand for <em>revolute</em> and the P stands for <em>prismatic</em>. An example of an RRP robotic arm is the SCARA robot which we shall deal with shortly.</p>
 
-<h3>4.3.  Taxonomy of Robots</h3>
+<h3>4.3.  Taxonomy of Robot Manipulators</h3>
 
 <h4>4.3.1. Configuration</h4>
 
-<p>The configuration of a manipulator is a complete description of every point on the robot manipulator.
-When we know the set of all possible configurations, we say we have the <strong>configuration space</strong> of the robot. The configuration space will correspond mathematically to knowing the set of all possible \(\theta_i\) for a revolute joint or \(d_i\) for a prismatic robot where \(\theta_i\) denotes the respective joint angles and \(d_i\) denotes the respective displacements. </p>
+<p>The configuration of a manipulator is a complete description of the location of every point on the robot manipulator.
+When we know the set of all possible configurations, we say we know the <strong>configuration space</strong> of the robot. The configuration space will correspond mathematically to knowing the set of all possible \(\theta_i\) for a revolute joint or \(d_i\) for a prismatic robot where \(\theta_i\) denotes the respective joint angles and \(d_i\) denotes the respective displacements. The set of angles \(\theta_i\) for a revolute joint is naturally associated with a unit circle in the plane denoted by \(\mathcal{S}^1\). It is typical for you to see revolute joints written as \(\theta_i\) \(\in\)  \(\mathcal{S}^1\) in literature. </p>
 
-<p><strong>Example 1:</strong> For a single revolute joint arm, the configuration space is \(\mathcal{S}^1\), which is geometrically a one-dimensional sphere (or 1-D sphere).</p>
+<p><strong>Example 1:</strong> For a single revolute joint arm, the configuration space is \(\mathcal{S}^1\), which geometrically is a one-dimensional sphere (or 1-D sphere).</p>
 
 <p><strong>Example 2:</strong> A two-revolute joint arm will have \(\mathcal{S}^1\) \(\times\) \(\mathcal{S}^1\) configuration space. This is visually equivalent to moving an outer circle arrount an inner concentric circle. This is called a torus (donut-shaped).</p>
 
@@ -221,14 +224,81 @@ When we know the set of all possible configurations, we say we have the <strong>
 
 <h4>4.3.2.  Degrees of freedom</h4>
 
-<p>The number of degrees of freedom of a robot is the minimum number of parameters required to specify the configuration of a robot. Generally, this is equivalent to the size of the configuration space. Typically, the number of joints for a robotic manipulator will tell us about how many degrees of freedom it has. The <a href="http://www.robai.com/robots/robot/cyton-epsilon-300/">cyton arm robot</a> which we will use in most of the labs that accompany this class has seven joints and hence seven degrees of freedom. A rigid object in three-dimensional space will have six degrees of freedom(DOF) because it will have 3 dedicated to orientation and 3 dedicated to translation.</p>
+<p>The number of degrees of freedom of a robot is the minimum number of parameters required to specify the configuration of a robot. Generally, this is equivalent to the size of the configuration space. Typically, the number of joints for a robotic manipulator will tell us about how many degrees of freedom it has. The <a href="http://www.robai.com/robots/robot/cyton-epsilon-300/">cyton arm robot</a> which we will use in most of the labs that accompany this class has seven joints and hence seven degrees of freedom. A rigid object in three-dimensional space will have six degrees of freedom(DOF) because it will have 3 dedicated to orientation and 3 dedicated to translation. When the DOF is lesser than 6, the robot is said to be <u>underactuated</u>. An example of underactuated robots include quadrotors with four rotors. When a manipulator has more than 6 DOF, we say such a robot is <u>kinematically redundant</u>.</p>
+
+<h4>4.3.3.  The State</h4>
+
+<p>The state includes the geometry of all inputs, all disturbances, velocities, forces and et cetera that determine the current and future response of the manipulator.</p>
+
+<h4>4.3.4.  The State Space</h4>
+
+<p>The state space is the set of all possible states of a manipulator. </p>
+
+<h4>4.3.5.  The Workspace</h4>
+
+<p>The volume of the motion traversed by the end-effector as the manipulator executes possible motions is called the workspace. Often separated into the <b>reachable workspace</b> and <b>dexterous workspace</b> depending on how many of the possible set of points an end-effector can reach based. The <strong>reachable workspace</strong> is the set of all possible points the manipulator can reach while the <strong>dexterous workspace</strong> is the set of points the manipulator can reach based on an arbitrary orientation of the end effector.</p>
+
+<h2>4.4.  Accuracy and Repeatability</h2>
+
+<p>The <strong>accuracy</strong> of a manipulator is a measure of how close the manipulator can reach a specific point \(x, y, z\) in the state space. There is no absolute correct way to measure the accuracy of a robot. One method is to use position encoders in joints at known locations. This would use the assumed geometry of the manipulator and its rigidity to infer the end-effector position from the measured joint positions. It becomes apparent therefore that accuracy is affected by computational errors, machining accuracy during the manipulator construction, gear backlash among other things.</p>
+
+<p><strong>Repeatability</strong> is a measure of how close a manipulator can return to a previously taught point. The <u>resolution of the controller</u> will affect a manipulator&#39;s repeatability. The resolution is the smallest degree of increase in manipulator motion that a robot can sense and is the ratio of the total distance travelled and \(2^n\) where \(n\) is the number of bits of the encoder accuracy. Therefore a prismatic axis will have a greater resolution compared to a revolute joint (a straight line is shorter than an arc length).</p>
+
+<p><a name='common-robot-arm-configurations'></a></p>
+
+<h2>5. Common Robot Arm Configurations</h2>
+
+<p>Following the prismatic and revolute joint taxonomy, there are many possiblities in the way a manipulator arm can be designed. This section discusses the common design attributes of the typical arrangements.</p>
+
+<h3>5.1.  Articulated Manipulator (RRR)</h3>
+
+<p>This is otherwise called the <strong>anthromorphic</strong> manipulator named out of its anthropomorphic characteristics. It has three revolute joints with each axis designated as the <strong>waist</strong> (\(z_0\)), <strong>shoulder</strong> (\(z_1\)), and <strong>elbow</strong> (\(z_2\)). More often than not, the joint axis \(z_2\) will be parallel to \(z_1\) while both \(z_2\) and \(z_1\) will be perpendicular to \(z_0\). The revolute manipulator has a considerably large degree of freedom of movement in a compact space.</p>
+
+<p><center><img src="/assets/Lec1/RRR.png" alt="Articulated Robot rm"></center>
+<center>Fig 5.1. Symbolic representation of a six-DOF elbow manipulator with links and joints similar to those of a a human joint/limbs which explains why it is called an anthroppmorphic robot. Photo courtesy of [\(^2\)].</center></p>
+
+<h3>5.2.  The Spherical Manipulator (RRP)</h3>
+
+<p>If we replace the elbow or last joint in the <strong>RRR</strong> manipulator with a prismatic joint, we would be left with what is called the <strong>spherical manipulator</strong>. Spherical joints are capable of arbitrary rotations and the name derives from the fact that the &quot;joint coordinates coincide with the spherical coordinates of the end effector relative to a coordinate frame located at the shoulder joint&quot;\(1\). Passive spherical joints is consists of a <em>ball and socket</em> joint. This does not work adequately if the joint is to exert forces and torques and hence actuated spherical joints are often constructed such that three revolute joints are combined with motors to the end of making their axes intersect at a point\(^3\).</p>
+
+<p><center><img src="/assets/Lec1/Spherical.png" alt="Spherical Robot rm"></center>
+<center>Fig 5.2. Symbolic representation of a spherical arm (left); The Stanford Arm (right) is an example of a spherical manipulator. Photo courtesy of [\(^2\)].</center></p>
+
+<h3>5.3.  The SCARA Manipulator (RRP)</h3>
+
+<p>Short for <strong>S</strong>elective <strong>Co</strong>mpliant <strong>A</strong>rticulated <strong>R</strong>obot for <strong>A</strong>ssembly. Introduced in 1979 in Japan and the United States. Typically used for pick and place operations.</p>
+
+<p><center><img src="/assets/Lec1/SCARA.png" alt="The Adept One robot"></center>
+<center>Fig.5.3.  Symbolic representation of the Adept One Robot. Photo Courtesy of [\(^3\)].</center></p>
+
+<p>It is a bit different from the Spherical Manipulators in that its \(z_0\), \(z_1\) and \(z_2\) are all parallel to one another.</p>
+
+<h3>5.4.  The Cylindrical Manipulator (RPP)</h3>
+
+<p>The cylindrical manipulator has two independent degrees of freedom and is typically a combination of a revolute and two prismatic joints such that their axes <strong>intersect</strong>. An example of the cylindrical joint is shown in fig 5.4.</p>
+
+<div class="fig figcenter fighighlight">
+  <img src="http://icosym-nt.cvut.cz/odl/partners/fuh/EXAMPLES/eqs5/stan_FM.gif" width="60%" height="500" align="middle"> 
+  <div class="figcaption" align="middle">Fig.5.4.  Symbolic representation of the Cylindrical Robot. Photo Courtesy of [4]</a>.
+  </div>
+</div>
+
+<h3>5.5.  The Cartesian Manipulator (PPP)</h3>
+
+<p>We say a manipulator is cartesian of its first three joints are prismatic. The variables of the joints are the cartesian Cartesian coordinates with respect to the base. They find uses in sealant application to materials as in table-top assembly, as gantry robots e.g. for cargo transfer etc. Its axes are coincident to a Cartesuab coordinator</p>
+
+<p><center><img src="http://prime.jsc.nasa.gov/ROV/images/cartesian.GIF" alt="An example cartesian robot manipulator"></center>
+<center>Fig. 5.5. An example cartesian robot manipulator.</center></p>
 
 <p><a name='add'></a></p>
 
-<h2>Additional References</h2>
+<h2>References</h2>
 
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Three_Laws_of_Robotics">Asimov, Isaac (circa 1950) I, Robot.</a></li>
+<li>1.  <a href="https://en.wikipedia.org/wiki/Three_Laws_of_Robotics">Asimov, Isaac (circa 1950) I, Robot.</a>.</li>
+<li>2.  Robot Modeling and Control, Mark W. Spong, Seth Hutchinson and M. Vidyasagar. John Wiley &amp; Sons Inc. 2006.</li>
+<li>3.  A Mathematical Introduction to Robotic Manipulation, Richard Murray, Zexiang Li and S. Shankar Sastry. CRC Press. 1994.</li>
+<li>4.  <a href="http://icosym-nt.cvut.cz/odl/partners/fuh/EXAMPLES/eqs5/stan_FM.gif">Dynast</a>.</li>
 </ul>
 
   </article>
