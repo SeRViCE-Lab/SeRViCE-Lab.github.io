@@ -8,10 +8,14 @@ mathjax: true
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
->* A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+>###The Three Laws of Robotics\\(^1\\)
+* A robot may not injure a human being or, through inaction, allow a human being to come to harm.
 * A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
-* A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws \\(^1\\).
+* A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws.
 
+## Instructor: [Olalekan Ogunmolu](http://github.com/lakehanne).
+    Date of Lecture: August 25, 2015.
+    Venue:           ECSN 2.126, UT Dallas, Richardson, Texas.
 
 ## Table of Contents:
 
@@ -225,6 +229,11 @@ We say a manipulator is cartesian of its first three joints are prismatic. The v
 <center>![An example cartesian robot manipulator](http://prime.jsc.nasa.gov/ROV/images/cartesian.GIF)</center>
 <center>Fig. 5.5. An example cartesian robot manipulator.</center>
 
+<a name='summary'></a>
+##Summary
+In this class, we have covered the mathematical basis of robotics and built a foundation upon which we shall build the next several modules. Please go through the material posted on elearning and chapter 1 of Dr. Spong's book [\\(^2\\)] to get familiarized all the more with the topics we have discussed so far. 
+
+We'll see you in the next class.
 
 <a name='add'></a>
 ## References
