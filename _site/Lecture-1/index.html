@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Introduction to Robotics (EECS 4342)  Lab Manual</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Lab materials and codebase for UT Dallas' class EECS 4342: Introduction to Robotics.">
+    <link rel="canonical" href="http://eecs4342.github.io/Lecture-1/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Google tracking -->
+    
+    <script>
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-64680332-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+    
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap title-wrap">
+    <a class="site-title" href="/">Introduction to Robotics (EECS 4342)  Lab Manual</a>
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1></h1>
+  </header>
+
+  <article class="post-content">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<blockquote>
+<h3>The Three Laws of Robotics</h3>
+
+<ol>
+<li> A robot may not injure a human being or, through inaction, allow a human being to come to harm.</li>
+<li> A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.</li>
+<li> A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws. [1]</li>
+</ol>
+</blockquote>
+
+<p>Table of Contents:</p>
+
+<ul>
+<li><a href="#objectives">Course Objectives</a></li>
+<li><a href="#topics">Topics</a></li>
+<li><a href="#policy">Grading Policy</a></li>
+<li><a href="#maths">Mathematical Modeling of Robots</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#add">Additional references</a></li>
+</ul>
+
+<p><a name='objectives'></a></p>
+
+<h2>1. Course Learning Objectives</h2>
+
+<ul>
+<li>Students will learn and utilize the mathematical representation of rigid body motions,
+including homogeneous transformations, to solve for position and orientation and
+velocities of objects. They will apply this by programming physical robotics systems.</li>
+<li>Students will formulate and solve forward and inverse kinematic equations and write
+programs to solve these equations and carry them out on physical robots.</li>
+<li>Students will formulate and solve velocity kinematics equations and equations and write
+programs to solve these equations and carry them out on physical robots.</li>
+<li>Student will learn the mathematical procedures for robot motion planning and trajectory
+generation and execute such algorithms in simulation and programming robots.</li>
+<li>Students will expound the mathematical theory and physical implementation of common
+robot sensors including rotary encoders and cameras, as well as write programs to read
+and process data from such sensors to send control commands to robots.</li>
+</ul>
+
+<p><a name='topics'></a></p>
+
+<h2>2. Topics</h2>
+
+<ul>
+<li>Introduction: Historical development of robots; basic terminology and structure; robots in
+automated manufacturing</li>
+<li>Rigid Motions and Homogeneous Transformation: Rotations and their composition;
+Euler angles; roll-pitch-yaw; homogeneous transformations</li>
+<li>Forward Kinematics: Common robot configurations; Denavit-Hartenberg convention; Amatrices;
+T-matrices</li>
+<li>Inverse kinematics: Planar mechanisms; geometric approaches; spherical wrist</li>
+<li>Velocity kinematics: Angular velocity and acceleration; The Jacobian; singular
+configurations; singular values; pseudoinverse; manipulability</li>
+<li>Motion planning: Configuration space; artificial potential fields; randomized methods;
+collision detection</li>
+<li>Trajectory generation: Joint space interpolation; polynomial splines; trapezoidal velocity
+profiles; minimum time trajectories</li>
+<li>Vision-based control: The geometry of image formation; feature extraction; feature
+tracking; the image Jacobian; visual servo control</li>
+<li>Advanced Topics (one or more of the following depending on time and class interest):
+Lagrangian dynamics; path planning; mobile robots; force sensing and force control; </li>
+</ul>
+
+<p><a name="policy"></a></p>
+
+<h2>3. Grading Policy</h2>
+
+<ul>
+<li>Labs: 25%</li>
+<li>Homeworks: 25%</li>
+<li>Exam 1: 25%</li>
+<li><p>Exam 2:  25%</p></li>
+<li><p>Targeted grade ranges:  </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">                - A: 90-100%
+
+                - B: 80-89%
+
+                - C: 70-79%
+
+                - D: 60-69%
+
+                - F: &lt;60%
+</code></pre></div></li>
+</ul>
+
+<p>This is a mixed class. Graduate and undergraduate students will be graded and
+curved separately.</p>
+
+<p>There will be two exams given during the semester. In the event of an excused
+absence (illness, job-related travel, holy day absence, etc.), students
+<u><strong>must</strong></u> inform the instructor ahead of time and provide proper documentation of
+the conflict. An accommodation will be attempted for verifiable problems.
+Homework assignments will be collected graded and discussed in class (as time
+permits). </p>
+
+<p>Homework will be collected at the beginning of the class period when
+it is due. Homework that is not reasonably neat and readable, or not bound,
+will be marked down. <u ><strong>Late Homework will not be accepted</strong></u>. It may not be
+returned to you until a week after it is due, which means you may not have it
+back for a problem-solving session, or to use in studying for an exam. <u ><strong>If you
+want to have it available at these times, you will have to make a photocopy
+of it before you turn it in.</strong></u></p>
+
+<p><a name='maths'></a></p>
+
+<h2>4.  Mathematical Modeling of Robots</h2>
+
+<h3>4.1.  DEFINITION OF A ROBOT</h3>
+
+<blockquote>
+<p><em>A robot is a reprogrammable, multifunctional manipulator designed to move material, parts, tools, or specialized devices through variable programmed motions for the performance of a variety of tasks.</em>    </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">        -- Spong, Hutchinson and Vidyasagar, Robot Modeling and Control (2006)    
+</code></pre></div></blockquote>
+
+<p>Basically, a robot should be able to <code>sense</code>, <code>move</code> and <code>act intelligently</code>. Put difeerently, a robot should have sensors on it to enable it to be environmentally-aware. It should be equipped with mechanical parts such as electric motors to make it able to navigate its environment. Lastly, it needs some &#39;smarts&#39; (otherwise referred to as <code>reprogrammability</code> in engineering literature) to make it intelligent. The reporgrammability aspect of the definition is very important because it gives a robot <code>adaptibility</code> and <code>usefulness</code> making the robot <code>reconfigurable</code>.   </p>
+
+<h3>4.2.  ROBOT MANIPULATORS</h3>
+
+<p>Robot manipulators are made up of <u> <strong>links</strong></u>, \(i\), which are connected by <u><strong>joints</strong></u>, \(j_i\), to form a <u><strong>kinematic chain</strong></u>. Joints are typically rotary (henceforth referred to as <em>revolute</em>) or linear (henceforth referred to as <em>prismatic</em>). </p>
+
+<p>A <u><strong>revolute joint</strong></u> is akin to a hinge and allows relative rotation between two links. A <u><strong>prismatic</strong></u> joint allows a linear relative motion between the adjoint links. We will denote the revolute joints by \(R\) and the prismatic joints by \(P\).</p>
+
+<p>An example of a revolute joint is depicted in the figure below:</p>
+
+<div class="fig figcenter fighighlight">
+  <img src="/assets/Lec1/Revolute.png" width="49%" height="250" align="middle">  
+  <img src="/assets/Lec1/Prismatic.png" width="49%" height="250" style="border-left: 1px solid black;">
+  <div class="figcaption" align="right">Fig. 1. An example of a revolute joint (left) and a prismatic joint (right).<a href="https://code.google.com/p/impsim/wiki/jmanual_jointRevolute">  Courtesy of impsim. </a></div>
+</div>
+
+<p>The angle \(\Phi\) in the left figure is defined as the joint angle and it connects links <strong>LK1</strong> and <strong>LK2</strong>. Similarly, the displacement \(\Phi\) in the right figure connects  links <strong>LK1</strong> and <strong>LK2</strong>. Rotations follow the right hand rule. Essentially, this means if we have three orthonaormal vectors \(x\), \(y\), and \(z\) \(\in\) \(\mathcal{R}^3\) which define a coordinate frame, they must satisfy the mathematical relation, 
+<center>\(z\) = \(x\) \(\times\) \(y\).</center>
+We will denote the axis of rotation of a revolute joint or the axis of displacement of a prismatic joint as \(z^i\) if the joint connects links \(i\) and \(i+1\). \(\Phi\) is referred to as the <strong>joint variable</strong> for a revolute or prismatic joint as the case may be.</p>
+
+<h3>Things to remember</h3>
+
+<ul>
+<li>There are two types of joints: prismatic and revolute joints.</li>
+<li>\(\Phi\) is referred to the joint variable.</li>
+<li>A revolute joint will allow rotation between two links.</li>
+<li>A prismatic joint will allow displacement between two links.</li>
+<li>The axis of rotation for a typical joint, \(j_i\) that connects links \(i\) and \(i+1\) is \(z^i\).</li>
+</ul>
+
+<p>A three link arm with 2 revolute joints for example is referred to as an <strong>RRP</strong> arm, where the R&#39;s stand for <em>revolute</em> and the P stands for <em>prismatic</em>. AN example of an RRP robotic arm is the SCARA robot which we shall deal with shortly.</p>
+
+<h3>4.3.  Taxonomy of Robots</h3>
+
+<h4>4.3.1. Configuration</h4>
+
+<p>The configuration of a manipulator is a complete description of every point on the robot manipulator.
+When we know the set of all possible configurations, we say we have the <strong>configuration space</strong> of the robot. The configuration space will correspond mathematically to knowing the set of all possible \(\theta_i\) for a revolute joint or \(d_i\) for a prismatic robot where \(\theta_i\) denotes the respective joint angles and \(d_i\) denotes the respective displacements. </p>
+
+<p><strong>Example 1:</strong> For a single revolute joint arm, the configuration space is \(\mathcal{S}^1\), which is geometrically a one-dimensional sphere (or 1-D sphere).</p>
+
+<p><strong>Example 2:</strong> A two-revolute joint arm will have \(\mathcal{S}^1\) \(\times\) \(\mathcal{S}^1\) configuration space. This is visually equivalent to moving an outer circle arrount an inner concentric circle. This is called a torus (donut-shaped).</p>
+
+<p><center> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Simple_Torus.svg" alt="Torus"></center>
+<center> Fig 2. An example of a Torus. </center></p>
+
+<p><strong>Example 3:</strong> For a one revolute and one prismatic joint, the configuration space is \(\mathcal{S}^1\) \(\times\) \(\mathcal{R}\) which is geometrically the equivalent of a cylinder.</p>
+
+<h4>4.3.2.  Degrees of freedom</h4>
+
+<p>The number of degrees of freedom of a robot is the minimum number of parameters required to specify the configuration of a robot. Generally, this is equivalent to the size of the configuration space. Typically, the number of joints for a robotic manipulator will tell us about how many degrees of freedom it has. The <a href="http://www.robai.com/robots/robot/cyton-epsilon-300/">cyton arm robot</a> which we will use in most of the labs that accompany this class has seven joints and hence seven degrees of freedom. A rigid object in three-dimensional space will have six degrees of freedom(DOF) because it will have 3 dedicated to orientation and 3 dedicated to translation.</p>
+
+<p><a name='add'></a></p>
+
+<h2>Additional References</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Three_Laws_of_Robotics">Asimov, Isaac (circa 1950) I, Robot.</a></li>
+</ul>
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="footer-col-1 column">
+      <ul>
+        
+        <li>
+          <a href="https://github.com/SeRViCE-Lab">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">SeRViCE-Lab</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/patmeansnoble">
+            <span class="icon twitter">
+              <svg version="1.1" class="twitter-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill="#C2C2C2" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27
+                c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767
+                c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206
+                C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271
+                c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469
+                c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+              </svg>
+            </span>
+            <span class="username">patmeansnoble</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:ngans@utdallas.edu">ngans@utdallas.edu</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+        
+    </div>
+
+    <div class="footer-col-3 column">
+      
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <!-- mathjax -->
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

@@ -5,7 +5,7 @@ description: "Lab materials and codebase for UT Dallas' class EECS 4342: Introdu
 baseurl: ""
 url: "http://eecs4342.github.io"
 twitter_username: patmeansnoble
-github_username:  SeRViCE-Lab
+github_username: eecs4342
 timezone: America/Chicago
 gems:
     - jekyll-redirect-from
